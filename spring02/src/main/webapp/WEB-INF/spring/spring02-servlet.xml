@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+	<!-- 의존주입 DI 패턴 -->
 	<bean id="emp" class="com.bit.framework.emp.model.EmpDao" scope="singleton">
 		<constructor-arg value="org.mariadb.jdbc.Driver"></constructor-arg>
 		<constructor-arg value="jdbc:mysql://localhost:3306/xe"></constructor-arg>
@@ -21,6 +22,9 @@
 		</property>
 	</bean>
 	<bean name="/emp/add.bit" class="com.bit.framework.emp.controller.AddController">
+		<property name="dao" ref="emp"></property>
+	</bean>
+	<bean name="/emp/detail.bit" class="com.bit.framework.emp.controller.DetailController">
 		<property name="dao" ref="emp"></property>
 	</bean>
 	<!-- viewResolver -->

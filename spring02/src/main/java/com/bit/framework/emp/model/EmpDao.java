@@ -62,4 +62,21 @@ public class EmpDao {
 					pstmt.executeUpdate();
 			}
 		}
+
+		public EmpVo selectOne(int parseInt) throws SQLException {
+			String sql="select * from emp where sabun=?";
+			try (
+					Connection conn=DriverManager.getConnection(url, user, password);
+					PreparedStatement pstmt = conn.prepareStatement(sql);
+					){
+				pstmt.setInt(1, parseInt);
+				ResultSet rs=pstmt.executeQuery();
+				if(rs.next())
+					return new EmpVo(
+							rs.getInt("sabun"),rs.getString("name"),rs.getString("sub"),
+							rs.getTimestamp("nalja"),rs.getInt("pay")
+							);
+			}
+			return null;
+		}
 }
