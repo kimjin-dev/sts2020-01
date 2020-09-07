@@ -4,12 +4,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- 의존주입 DI 패턴 -->
-	<bean id="emp" class="com.bit.framework.emp.model.EmpDao" scope="singleton">
-		<constructor-arg value="org.mariadb.jdbc.Driver"></constructor-arg>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
 		<constructor-arg value="jdbc:mysql://localhost:3306/xe"></constructor-arg>
 		<constructor-arg value="scott"></constructor-arg>
 		<constructor-arg value="tiger"></constructor-arg>
 	</bean>
+	<bean id="emp" class="com.bit.framework.emp.model.EmpDao" scope="singleton">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
 	<!-- handlermapping -->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
 
