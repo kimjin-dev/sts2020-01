@@ -2,27 +2,27 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 의존주입 DI(Dependency Injection ) -->
 	
-	<!-- 의존주입 DI 패턴 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
-		<constructor-arg value="jdbc:mysql://localhost:3306/xe"></constructor-arg>
-		<constructor-arg value="scott"></constructor-arg>
-		<constructor-arg value="tiger"></constructor-arg>
+		<property name="url" value="jdbc:mysql://localhost:3306/xe"></property>
+		<property name="username" value="scott"></property>
+		<property name="password" value="tiger"></property>
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-		<property name="dataSource" ref="dataSoutrce"></property>
-	</bean>
-	
 	<bean id="emp" class="com.bit.framework.emp.model.EmpDao" scope="singleton">
 		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
-	</bean>
-	
+	</bean>		
 	
 	<!-- handlermapping -->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
-
+	
 	<bean name="/index.bit" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="index"></property>
 	</bean>
@@ -40,10 +40,10 @@
 	<bean name="/emp/update.bit" class="com.bit.framework.emp.controller.UpdateController">
 		<property name="dao" ref="emp"></property>
 	</bean>
+	
 	<!-- viewResolver -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	
 </beans>
