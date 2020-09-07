@@ -8,17 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
+
 import com.bit.framework.emp.model.entity.EmpVo;
 
-public class EmpDao {
-		private javax.sql.DataSource dataSource;
+public class EmpDao extends JdbcDaoSupport {
 		
 		public EmpDao() {
-			
-		}
-		
-		public void setDataSource(javax.sql.DataSource dataSource) {
-			this.dataSource = dataSource;
 		}
 		
 		public List<EmpVo> selectAll(){
@@ -26,7 +22,7 @@ public class EmpDao {
 			List<EmpVo> list= new ArrayList<>();
 			
 			try (
-				Connection conn = dataSource.getConnection();
+				Connection conn = getConnection();
 				PreparedStatement pstmt= conn.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery();
 					){
@@ -45,7 +41,7 @@ public class EmpDao {
 		public void insertOne(String name, String sub, int pay) throws SQLException {
 			String sql = "insert into emp (name, sub, nalja, pay) values (?,?,now(),?)";
 			try (
-					Connection conn = dataSource.getConnection();
+					Connection conn = getConnection();
 					PreparedStatement pstmt = conn.prepareStatement(sql);
 					){
 					pstmt.setString(1, name);
@@ -58,7 +54,7 @@ public class EmpDao {
 		public EmpVo selectOne(int parseInt) throws SQLException {
 			String sql="select * from emp where sabun=?";
 			try (
-					Connection conn = dataSource.getConnection();
+					Connection conn = getConnection();
 					PreparedStatement pstmt = conn.prepareStatement(sql);
 					){
 				pstmt.setInt(1, parseInt);
@@ -75,7 +71,7 @@ public class EmpDao {
 		public int updateOne(int sabun, String name, String sub, int pay) throws SQLException {
 			String sql = "update emp set name=?, sub=?, pay=? where sabun=?";
 			try(
-					Connection conn = dataSource.getConnection();
+					Connection conn = getConnection();
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 					) {
 				pstmt.setInt(4, sabun);
