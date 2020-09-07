@@ -43,4 +43,16 @@ public class EmpDao {
 			}
 			return list;
 		}
+		public void insertOne(String name, String sub, int pay) throws SQLException {
+			String sql = "insert into emp (name, sub, nalja, pay) values (?,?,now(),?)";
+			try (
+					Connection conn=DriverManager.getConnection(url, user, password);
+					PreparedStatement pstmt = conn.prepareStatement(sql);
+					){
+					pstmt.setString(1, name);
+					pstmt.setString(2, sub);
+					pstmt.setInt(3, pay);
+					pstmt.executeUpdate();
+			}
+		}
 }
