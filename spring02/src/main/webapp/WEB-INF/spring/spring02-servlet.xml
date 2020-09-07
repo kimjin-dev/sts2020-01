@@ -18,7 +18,7 @@
 
 	<bean id="emp" class="com.bit.framework.emp.model.EmpDao" scope="singleton">
 		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
-	</bean>		
+	</bean>	
 	
 	<!-- handlermapping -->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
@@ -40,6 +40,10 @@
 	<bean name="/emp/update.bit" class="com.bit.framework.emp.controller.UpdateController">
 		<property name="dao" ref="emp"></property>
 	</bean>
+	<bean name="/emp/delete.bit" class="com.bit.framework.emp.controller.DeleteController">
+		<property name="dao" ref="emp"></property>
+	</bean>	
+	
 	
 	<!-- viewResolver -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
