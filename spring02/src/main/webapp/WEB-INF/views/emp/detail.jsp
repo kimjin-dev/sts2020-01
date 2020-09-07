@@ -34,7 +34,7 @@
 		</div>
 		<div class="row" id="content">
 			<div class="col-md-12">
-				<form class="form-horizontal" method="post">
+				<form class="form-horizontal" action="update.bit" method="post">
 				  <div class="form-group">
 				    <label for="sabun" class="col-sm-2 control-label">sabun</label>
 				    <div class="col-sm-10">

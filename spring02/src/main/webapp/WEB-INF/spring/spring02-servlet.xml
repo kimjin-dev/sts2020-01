@@ -27,6 +27,9 @@
 	<bean name="/emp/detail.bit" class="com.bit.framework.emp.controller.DetailController">
 		<property name="dao" ref="emp"></property>
 	</bean>
+	<bean name="/emp/update.bit" class="com.bit.framework.emp.controller.UpdateController">
+		<property name="dao" ref="emp"></property>
+	</bean>
 	<!-- viewResolver -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"></property>

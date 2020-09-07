@@ -79,4 +79,18 @@ public class EmpDao {
 			}
 			return null;
 		}
+
+		public int updateOne(int sabun, String name, String sub, int pay) throws SQLException {
+			String sql = "update emp set name=?, sub=?, pay=? where sabun=?";
+			try(
+				Connection conn = DriverManager.getConnection(url, name, password);
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+					) {
+				pstmt.setInt(4, sabun);
+				pstmt.setString(1, name);
+				pstmt.setString(2, sub);
+				pstmt.setInt(3, pay);
+				return pstmt.executeUpdate();
+			}
+		}
 }
