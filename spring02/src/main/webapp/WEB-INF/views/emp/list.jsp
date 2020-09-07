@@ -6,9 +6,9 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+	<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 	
 	
@@ -29,9 +29,27 @@
 		</div>
 		<div class="row" id="content">
 			<div class="col-md-12">
-			
-				<img alt="" src="imgs/index.png" class="img-circle"/>
-				
+				<table class="table text-center">
+					<thead>
+						<tr>
+							<th>사번</th>
+							<th>제목</th>
+							<th>이름</th>
+							<th>날짜</th>
+							<th>금액</th>
+						</tr>
+					</thead>
+					<c:forEach items="${alist }" var="bean">
+						<tr>
+							<td>${bean.sabun }</td>
+			  				<td>${bean.sub }</td>
+			  				<td>${bean.name }</td>
+			  				<td>${bean.nalja }</td>
+			  				<td>${bean.pay }</td>
+			  			</tr>
+					</c:forEach>			
+				</table>
+				<a href="add.bit" class="btn btn-primary" role="btn">입 력</a>				
 			</div>
 		</div>
 		<div class="row" id=footer>

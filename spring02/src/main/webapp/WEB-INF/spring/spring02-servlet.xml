@@ -9,7 +9,9 @@
 	<bean name="/index.bit" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="index"></property>
 	</bean>
-
+	<bean name="/emp/list.bit" class="com.bit.framework.emp.controller.ListController">
+	</bean>
+	<bean name="/emp/add.bit" class="com.bit.framework.emp.controller.AddController"></bean>
 	<!-- viewResolver -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"></property>
