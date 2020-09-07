@@ -40,21 +40,19 @@ public class EmpDao extends JdbcDaoSupport {
 		getJdbcTemplate().update(sql, params);
 	}
 
-	public EmpVo selectOne(int parseInt) throws SQLException {
+	public EmpVo selectOne(int sabun) throws SQLException {
 		String sql="select * from emp where sabun=?";
-		try(
-				Connection conn=getConnection();
-				PreparedStatement pstmt=conn.prepareStatement(sql);
-				){
-			pstmt.setInt(1, parseInt);
-			ResultSet rs=pstmt.executeQuery();
-			if(rs.next())
+		return getJdbcTemplate().queryForObject(sql, new Object[] {sabun}, new RowMapper<EmpVo>() {
+
+			@Override
+			public EmpVo mapRow(ResultSet rs, int rowNum) throws SQLException {
 				return new EmpVo(
 						rs.getInt("sabun"),rs.getString("name"),rs.getString("sub")
 						,rs.getTimestamp("nalja"),rs.getInt("pay")
 						);
-		}
-		return null;
+			}
+			
+		});
 	}
 
 	public int updateOne(int sabun, String name, String sub, int pay) throws SQLException {
