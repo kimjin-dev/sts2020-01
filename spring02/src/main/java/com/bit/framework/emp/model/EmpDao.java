@@ -11,26 +11,33 @@ import java.util.List;
 import com.bit.framework.emp.model.entity.EmpVo;
 
 public class EmpDao {
-		private String url="jdbc:mysql://localhost:3306/xe";
-		private String user="scott";
-		private String password="tiger";
+		private String driver;
+		private String url;
+		private String user;
+		private String password;
 		
-		public EmpDao() {
+		public EmpDao(String driver, String url, String user, String password) {
+			this.driver = driver;
+			this.url = url;
+			this.user = user;
+			this.password = password;
+			System.out.println("create Dao...");
 			try {
-				Class.forName("org.mariadb.jdbc.Driver");
+				Class.forName(driver);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-			
 		}
+		
 		public List<EmpVo> selectAll(){
 			String sql="select * from emp";
 			List<EmpVo> list= new ArrayList<>();
 
-			try {
+			try (
 				Connection conn = DriverManager.getConnection(url, user, password);
 				PreparedStatement pstmt= conn.prepareStatement(sql);
 				ResultSet rs = pstmt.executeQuery();
+					){
 				while(rs.next()) {
 					list.add(new EmpVo(
 					rs.getInt("sabun"),rs.getString("name"),rs.getString("sub")

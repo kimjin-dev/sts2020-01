@@ -9,10 +9,14 @@ import org.springframework.web.servlet.mvc.Controller;
 import com.bit.framework.emp.model.EmpDao;
 
 public class ListController implements Controller {
-
+	EmpDao dao;
+	
+	public void setDao(EmpDao dao) {
+		this.dao = dao;
+	}
+	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		EmpDao dao = new EmpDao();
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("alist", dao.selectAll());
 		mav.setViewName("emp/list");
