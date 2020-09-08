@@ -8,7 +8,7 @@ import org.springframework.web.servlet.mvc.Controller;
 
 import com.bit.framework.dept.model.DeptDao;
 
-public class ListController implements Controller {
+public class DeleteController implements Controller {
 	DeptDao deptDao;
 	
 	public void setDeptDao(DeptDao deptDao) {
@@ -17,10 +17,8 @@ public class ListController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		ModelAndView mav=new ModelAndView();
-		mav.setViewName("dept/list");
-		mav.addObject("list", deptDao.selectAll());
-		return mav;
+		deptDao.deleteOne(Integer.parseInt(request.getParameter("idx")));
+		return new ModelAndView("redirect:list.bit");
 	}
 
 }

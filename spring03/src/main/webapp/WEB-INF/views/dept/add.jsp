@@ -33,7 +33,28 @@
 		</div>
 		<div class="row">
 		  <div class="col-md-12" id="content">
-		  	<img alt="" src="imgs/index.png" class="img-circle" />
+		  	<div class="page-header">
+			  <h1>INSERT PAGE <small>DEPT TABLE ${fieldErrors }</small></h1>
+			</div>
+			<form class="form-horizontal" action="insert.bit" method="post">
+			  <div class="form-group">
+			    <label for="dname" class="col-sm-2 control-label">dname</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" name="dname" id="dname" placeholder="이름">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="loc" class="col-sm-2 control-label">location</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" name="loc" id="loc" placeholder="지역">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-default">입 력</button>
+			    </div>
+			  </div>
+			</form>
 		  </div>
 		</div>
 		<div class="row" id="footer">
