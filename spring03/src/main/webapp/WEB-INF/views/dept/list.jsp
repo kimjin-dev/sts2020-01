@@ -35,7 +35,27 @@
 		</div>
 		<div class="row" >
 			<div class="col-md-12" id="content">
-			<img alt="" src="imgs/index.png" class="img-circle"/>
+				<div class="page-header">
+	 				 <h1>LIST PAGE <small>DEPT TABLE</small></h1>
+				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>deptno</th>
+							<th>dname</th>
+							<th>loc</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${list }" var="bean">
+						<tr>
+							<td><a href="#">${bean.deptno }</a></td>
+							<td><a href="#">${bean.dname }</a></td>
+							<td><a href="#">${bean.loc }</a></td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<div class="row" id="footer">
