@@ -90,17 +90,46 @@
 	<bean id="module02" class="com.bit.framework.service.Module02">
 		<property name="console" ref="consoleService"></property>
 	</bean>
+<!-- 	
+	<bean id="pointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedName" value="func01"></property>
+	</bean>
+	 -->
+	 
+	<!--  
+	ex setPatterns(".*.*(..)"); 
+	ex setPatterns("com.abc.service.*.*(..)"); 
+	ex setPatterns(".*Class~.*(..)"); 
+	ex setPatterns(".*.*Method(..)"); 
+	<bean id="pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+		<property name="pattern" value=".Module02.*"></property>
+	</bean>
+	
+	<bean id="advisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="pointcut"></property>
+		<property name="advice" ref="methodBeforeAdvise"></property>
+	</bean>
+	-->
+
+	<bean id="pointcutAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="patterns">
+			<array>
+				<value>.*.*</value>
+			</array>
+		</property>
+		<property name="advice" ref="methodInterceptor"></property>
+	</bean>
 	
 	<bean id="proxyBean" class="org.springframework.aop.framework.ProxyFactoryBean">
 		<property name="target" ref="module02"></property>
 		<property name="interceptorNames">
 			<array>
-				<value>methodInterceptor</value>
-			
+				<value>pointcutAdvisor</value>
 			<!-- 
+				<value>methodBeforeAdvise</value>
+				<value>methodInterceptor</value>
 				<value>throwsAdvice</value>
 				<value>afterReturningAdvice</value>
-				<value>methodBeforeAdvise</value>
 				 -->
 				
 			</array>
