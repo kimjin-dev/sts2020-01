@@ -2,7 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-<!-- 
+	
+<!-- Ioc & Di
 	<bean id="consoleService1" class="com.bit.framework.service.EngConsoleService"></bean>
 	<bean id="consoleService2" class="com.bit.framework.service.KorConsoleService"></bean> -->
 	<!-- ConsoleService console = new KorConsoleService(); -->
@@ -28,7 +29,7 @@
 		<property name="ch" value="@"></property>
 	</bean>
 	 -->
-	<bean id="module" class="com.bit.framework.service.Module04">
+<!-- 	<bean id="module" class="com.bit.framework.service.Module04">
 		<property name="arr1">
 			<array>
 				<value>a</value>
@@ -55,7 +56,7 @@
 			</set>
 		</property>
 		<property name="map">
-		<!-- 	<map>
+			<map>
 				<entry key="key1">
 					<value>val1</value>
 				</entry>
@@ -68,7 +69,8 @@
 				<entry key="key4">
 					<value>val4</value>
 				</entry>
-			</map> -->
+			</map>
+			
 			<props>
 				<prop key="KEY1">VAL1</prop>
 				<prop key="KEY2">VAL2</prop>
@@ -77,5 +79,31 @@
 				<prop key="KEY5">VAL5</prop>
 			</props>
 		</property>
-	</bean>	
+	</bean>	 -->
+	<!-- AOP -->
+	<bean id="afterReturningAdvice" class="com.bit.framework.util.AfterModule"></bean>
+	<bean id="methodBeforeAdvise" class="com.bit.framework.util.BeforeModule02"></bean>
+	<bean id="throwsAdvice" class="com.bit.framework.util.ThrowModule"></bean>
+	<bean id="methodInterceptor" class="com.bit.framework.util.AroundModule"></bean>
+	
+	<bean id="consoleService" class="com.bit.framework.service.KorConsoleService"></bean>
+	<bean id="module02" class="com.bit.framework.service.Module02">
+		<property name="console" ref="consoleService"></property>
+	</bean>
+	
+	<bean id="proxyBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="module02"></property>
+		<property name="interceptorNames">
+			<array>
+			
+				<value>methodInterceptor</value>
+			<!-- 
+				<value>methodBeforeAdvise</value>
+				<value>afterReturningAdvice</value>
+				<value>throwsAdvice</value>
+				 -->
+				
+			</array>
+		</property>
+	</bean>
 </beans>

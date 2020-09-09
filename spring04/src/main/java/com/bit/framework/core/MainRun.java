@@ -29,11 +29,16 @@ public class MainRun {
 		
 //		Module03 module=(Module03) ac.getBean("module03");
 //		System.out.println(module);
-		Module04 module=(Module04)ac.getBean("module");
-		module.ArrayShow();
-		module.listShow();
-		module.setShow();
-		module.mapShow();
+//		Module04 module=(Module04)ac.getBean("module");
+//		module.ArrayShow();
+//		module.listShow();
+//		module.setShow();
+//		module.mapShow();
+		
+//		AOP(관점지향 프로그래밍,Aspect Oriented Programming)
+		Module02 module=(Module02)ac.getBean("proxyBean");
+		module.func01();
+		module.func02();
 	}
 
 }
