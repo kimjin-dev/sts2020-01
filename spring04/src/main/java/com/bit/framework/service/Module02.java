@@ -20,7 +20,7 @@ public class Module02 {
 	public void func02() {
 //		for(int i=0; i < 5; i++)console.sayHi();
 		int[] arr= {1,3,5,7,9};
-		for(int i=0; i < 6; i++) {
+		for(int i=0; i < 5; i++) {
 			System.out.print(arr[i]+":");
 			console.sayHi();	
 		}

@@ -95,12 +95,12 @@
 		<property name="target" ref="module02"></property>
 		<property name="interceptorNames">
 			<array>
-			
 				<value>methodInterceptor</value>
+			
 			<!-- 
-				<value>methodBeforeAdvise</value>
-				<value>afterReturningAdvice</value>
 				<value>throwsAdvice</value>
+				<value>afterReturningAdvice</value>
+				<value>methodBeforeAdvise</value>
 				 -->
 				
 			</array>
