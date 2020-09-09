@@ -38,5 +38,14 @@
 				<value>abcde</value>
 			</array>
 		</property>
+		<property name="list">
+			<list>
+				<value>A</value>
+				<value>AB</value>
+				<value>ABC</value>
+				<value>ABCD</value>
+				<value>ABCDE</value>
+			</list>
+		</property>
 	</bean>	
 </beans>

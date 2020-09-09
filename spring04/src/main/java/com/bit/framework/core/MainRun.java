@@ -31,6 +31,7 @@ public class MainRun {
 //		System.out.println(module);
 		Module04 module=(Module04)ac.getBean("module");
 		module.ArrayShow();
+		module.listShow();
 		
 	}
 
