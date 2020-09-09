@@ -8,6 +8,6 @@ import com.bit.framework.model.entity.DeptVo;
 public interface DeptService {
 
 		List<DeptVo> list() throws SQLException;
-		DeptVo detail(int deptno) throws SQLException;
 		void insert(DeptVo bean) throws SQLException;
+		DeptVo detail(int deptno) throws SQLException;
 }

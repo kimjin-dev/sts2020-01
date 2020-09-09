@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 public class DeptDao01Impl implements DeptDao {
 	JdbcTemplate jdbcTemplate;
+	DeptDao deptDao;
 	private RowMapper<DeptVo> rowMapper=new RowMapper<DeptVo>() {
 
 		public DeptVo mapRow(ResultSet rs, int rowNum) throws SQLException {

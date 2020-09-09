@@ -43,7 +43,8 @@ public class MainRun {
 //		for(DeptVo bean : deptService.list()) {
 //			System.out.println(bean);
 //		}
-		deptService.insert(new DeptVo(0,"test1","test2"));
+		deptService.insert(new DeptVo(0,"test5","test6"));
+//		System.out.println(deptService.detail(1));
 	}
 
 }

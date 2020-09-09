@@ -18,8 +18,7 @@ public class DeptService01Impl implements DeptService {
 	}
 
 	public DeptVo detail(int deptno) throws SQLException {
-
-		return null;
+		return deptDao.selectOne(deptno);
 	}
 	
 	public void insert(DeptVo bean) throws SQLException{
