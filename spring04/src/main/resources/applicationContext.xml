@@ -55,7 +55,7 @@
 			</set>
 		</property>
 		<property name="map">
-			<map>
+		<!-- 	<map>
 				<entry key="key1">
 					<value>val1</value>
 				</entry>
@@ -68,7 +68,14 @@
 				<entry key="key4">
 					<value>val4</value>
 				</entry>
-			</map>
+			</map> -->
+			<props>
+				<prop key="KEY1">VAL1</prop>
+				<prop key="KEY2">VAL2</prop>
+				<prop key="KEY3">VAL3</prop>
+				<prop key="KEY4">VAL4</prop>
+				<prop key="KEY5">VAL5</prop>
+			</props>
 		</property>
 	</bean>	
 </beans>
