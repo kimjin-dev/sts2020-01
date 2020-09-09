@@ -3,6 +3,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
+	<!-- Spring JDBC -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="org.mariadb.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/xe"></property>
+		<property name="username" value="scott"></property>
+		<property name="password" value="tiger"></property>
+	</bean>
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="deptDao" class="com.bit.framework.model.entity.DeptDao02Impl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+	<bean id="deptService" class="com.bit.framework.service.DeptService01Impl">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	
 <!-- Ioc & Di
 	<bean id="consoleService1" class="com.bit.framework.service.EngConsoleService"></bean>
 	<bean id="consoleService2" class="com.bit.framework.service.KorConsoleService"></bean> -->
@@ -80,8 +97,9 @@
 			</props>
 		</property>
 	</bean>	 -->
+	
 	<!-- AOP -->
-	<bean id="afterReturningAdvice" class="com.bit.framework.util.AfterModule"></bean>
+<!-- 	<bean id="afterReturningAdvice" class="com.bit.framework.util.AfterModule"></bean>
 	<bean id="methodBeforeAdvise" class="com.bit.framework.util.BeforeModule02"></bean>
 	<bean id="throwsAdvice" class="com.bit.framework.util.ThrowModule"></bean>
 	<bean id="methodInterceptor" class="com.bit.framework.util.AroundModule"></bean>
@@ -89,7 +107,7 @@
 	<bean id="consoleService" class="com.bit.framework.service.KorConsoleService"></bean>
 	<bean id="module02" class="com.bit.framework.service.Module02">
 		<property name="console" ref="consoleService"></property>
-	</bean>
+	</bean> -->
 <!-- 	
 	<bean id="pointcut" class="org.springframework.aop.support.NameMatchMethodPointcut">
 		<property name="mappedName" value="func01"></property>
@@ -111,7 +129,7 @@
 	</bean>
 	-->
 
-	<bean id="pointcutAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+<!-- 	<bean id="pointcutAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
 		<property name="patterns">
 			<array>
 				<value>.*.*</value>
@@ -125,14 +143,14 @@
 		<property name="interceptorNames">
 			<array>
 				<value>pointcutAdvisor</value>
-			<!-- 
+			
 				<value>methodBeforeAdvise</value>
 				<value>methodInterceptor</value>
 				<value>throwsAdvice</value>
 				<value>afterReturningAdvice</value>
-				 -->
+				
 				
 			</array>
 		</property>
-	</bean>
+	</bean> -->
 </beans>

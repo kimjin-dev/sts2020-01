@@ -1,16 +1,15 @@
 package com.bit.framework.core;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.context.support.GenericXmlApplicationContext;
+import java.sql.SQLException;
 
-import com.bit.framework.service.Module02;
-import com.bit.framework.service.Module03;
-import com.bit.framework.service.Module04;
+import org.springframework.context.ApplicationContext;
+
+import com.bit.framework.model.entity.DeptVo;
+import com.bit.framework.service.DeptService;
 
 public class MainRun {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 //		// Ioc(제어의 역전, Inversion of Control)
 //		
 //		Module02 module=new Module02(new KorConsoleService());
@@ -36,9 +35,15 @@ public class MainRun {
 //		module.mapShow();
 		
 //		AOP(관점지향 프로그래밍,Aspect Oriented Programming)
-		Module02 module=(Module02)ac.getBean("proxyBean");
-		module.func01();
-		module.func02();
+//		Module02 module=(Module02)ac.getBean("proxyBean");
+//		module.func01();
+//		module.func02();
+		
+		DeptService deptService=(DeptService) ac.getBean("deptService");
+//		for(DeptVo bean : deptService.list()) {
+//			System.out.println(bean);
+//		}
+		deptService.insert(new DeptVo(0,"test1","test2"));
 	}
 
 }
