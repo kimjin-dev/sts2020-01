@@ -47,5 +47,28 @@
 				<value>ABCDE</value>
 			</list>
 		</property>
+		<property name="set">
+			<set>
+				<value>AA</value>
+				<value>BB</value>
+				<value>CC</value>
+			</set>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="key1">
+					<value>val1</value>
+				</entry>
+				<entry key="key2">
+					<value>val2</value>
+				</entry>
+				<entry key="key3">
+					<value>val3</value>
+				</entry>
+				<entry key="key4">
+					<value>val4</value>
+				</entry>
+			</map>
+		</property>
 	</bean>	
 </beans>

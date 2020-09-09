@@ -32,7 +32,8 @@ public class MainRun {
 		Module04 module=(Module04)ac.getBean("module");
 		module.ArrayShow();
 		module.listShow();
-		
+		module.setShow();
+		module.mapShow();
 	}
 
 }
